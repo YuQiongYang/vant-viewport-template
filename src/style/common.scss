@@ -1,0 +1,100 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-family: 'Courier New', Courier, monospace;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.viewer-title, .viewer-toolbar{
+  display: none !important;
+}
+.viewer-toolbar{
+  ul{
+    margin: 0 auto 1.334vw;
+  }
+  li{
+    width: 48px !important;
+    height: 48px !important;
+    margin-left: 2px;
+  }
+}
+.viewer-button{
+    height: 21.334vw !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    right: -10.666vw !important;
+    top: -10.666vw !important;
+    width: 21.334vw !important;
+    &::before{
+      bottom: 4vw !important;
+      left: 4vw !important;
+    }
+}
+.viewer-close:before {
+  background-position: -69.334vw 0 !important;
+  height: 5.334vw !important;
+  width: 5.334vw !important;
+}
+.viewer-navbar{
+  ul{
+    height: 13.334vw;
+    li{
+      width: 8vw !important;
+      height: 13.334vw;
+    }
+	}
+}
+.com-flex{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+[lazy=loading]{
+	width: 200px !important;
+	height: 200px !important;
+	margin: auto;
+}
+
+// Custom public style...
