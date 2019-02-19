@@ -16,10 +16,8 @@
     "cssnano": "^4.1.10",
     "postcss-cssnext": "^3.1.0",
     "postcss-px-to-viewport": "^1.1.0",
-    "v-viewer": "^1.4.0",
     "vant": "^1.6.5",
     "vue": "^2.5.2",
-    "vue-lazyload": "^1.2.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.1.0"
   },

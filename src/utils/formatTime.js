@@ -3,17 +3,17 @@
  */
 
 export function parseTime (time, cFormat) {
-  if (!time) return;
+  if (!time) return
   if (arguments.length === 0) {
-    return null;
+    return null
   }
-  const format = cFormat || '{y}/{m}/{d} {h}:{i}';
-  let date;
+  const format = cFormat || '{y}/{m}/{d} {h}:{i}'
+  let date
   if (typeof time === 'object') {
-    date = time;
+    date = time
   } else {
-    if (('' + time).length === 10) time = parseInt(time) * 1000;
-    date = new Date(time);
+    if (('' + time).length === 10) time = parseInt(time) * 1000
+    date = new Date(time)
   }
   const formatObj = {
     y: date.getFullYear(),
@@ -23,30 +23,30 @@ export function parseTime (time, cFormat) {
     i: date.getMinutes(),
     s: date.getSeconds(),
     a: date.getDay()
-  };
+  }
   const timeStr = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
-    let value = formatObj[key];
+    let value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][ value ]; }
+    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][ value ] }
     if (result.length > 0 && value < 10) {
-      value = '0' + value;
+      value = '0' + value
     }
-    return value || 0;
-  });
-  return timeStr;
+    return value || 0
+  })
+  return timeStr
 }
 
 export function formatAct (time, cFormat) {
   if (arguments.length === 0) {
-    return null;
+    return null
   }
-  const format = cFormat || '{m}/{d} {h}:{i}';
-  let date;
+  const format = cFormat || '{m}/{d} {h}:{i}'
+  let date
   if (typeof time === 'object') {
-    date = time;
+    date = time
   } else {
-    if (('' + time).length === 10) time = parseInt(time) * 1000;
-    date = new Date(time);
+    if (('' + time).length === 10) time = parseInt(time) * 1000
+    date = new Date(time)
   }
   const formatObj = {
     y: date.getFullYear(),
@@ -56,47 +56,47 @@ export function formatAct (time, cFormat) {
     i: date.getMinutes(),
     s: date.getSeconds(),
     a: date.getDay()
-  };
+  }
   const timeStr = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
-    let value = formatObj[key];
+    let value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][ value ]; }
+    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][ value ] }
     if (result.length > 0 && value < 10) {
-      value = '0' + value;
+      value = '0' + value
     }
-    return value || 0;
-  });
-  return timeStr;
+    return value || 0
+  })
+  return timeStr
 }
 
 // 计算天数
 export function formatDay (o) {
-  var oldDay = new Date(o);
-  const newDay = new Date();
-  const days = oldDay.getTime() - newDay.getTime();
-  const day = Math.ceil(days / (1000 * 60 * 60 * 24));
-  return day;
+  var oldDay = new Date(o)
+  const newDay = new Date()
+  const days = oldDay.getTime() - newDay.getTime()
+  const day = Math.ceil(days / (1000 * 60 * 60 * 24))
+  return day
 }
 
 export function formatTime (time, option) {
-  time = +time * 1000;
-  const d = new Date(time);
-  const now = Date.now();
+  time = +time * 1000
+  const d = new Date(time)
+  const now = Date.now()
 
-  const diff = (now - d) / 1000;
+  const diff = (now - d) / 1000
 
   if (diff < 30) {
-    return '刚刚';
+    return '刚刚'
   } else if (diff < 3600) {
     // less 1 hour
-    return Math.ceil(diff / 60) + '分钟前';
+    return Math.ceil(diff / 60) + '分钟前'
   } else if (diff < 3600 * 24) {
-    return Math.ceil(diff / 3600) + '小时前';
+    return Math.ceil(diff / 3600) + '小时前'
   } else if (diff < 3600 * 24 * 2) {
-    return '1天前';
+    return '1天前'
   }
   if (option) {
-    return parseTime(time, option);
+    return parseTime(time, option)
   } else {
     return (
       d.getMonth() +
@@ -108,10 +108,10 @@ export function formatTime (time, option) {
       '时' +
       d.getMinutes() +
       '分'
-    );
+    )
   }
 }
 
 export function isExternal (path) {
-  return /^(https?:|mailto:|tel:)/.test(path);
+  return /^(https?:|mailto:|tel:)/.test(path)
 }

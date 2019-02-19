@@ -1,3 +1,3 @@
-const uploadUrl = process.env.BASE_API + '/upload';
+const uploadUrl = process.env.BASE_API + '/upload'
 
-export { uploadUrl };
+export { uploadUrl }

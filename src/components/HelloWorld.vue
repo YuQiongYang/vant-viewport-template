@@ -6,8 +6,7 @@
     ul
       li 666
       li 666
-    viewer(:images="defaultUser")
-      img( class="com-flex" v-lazy="defaultUser[0]")
+    img(class="com-flex" v-for="img in defaultUser" v-lazy="img" @click="handleImgPreview")
 </template>
 
 <script>
@@ -16,6 +15,13 @@ export default {
   data () {
     return {
       defaultUser: ['//asset.ibanquan.com/image/5c56a3a626a801592d000043/s.png?v=1549181862']
+    }
+  },
+  methods: {
+    handleImgPreview () {
+      if (this.defaultUser) {
+        this.$store.commit('HANDLE_PREVIEW_IMAGES', this.defaultUser)
+      }
     }
   }
 }
