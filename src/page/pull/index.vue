@@ -1,7 +1,7 @@
 <template lang="pug">
-  van-pull-refresh(v-model="isLoading" @refresh="onRefresh")
+  van-pull-refresh(v-model="isLoading" @refresh="onRefresh" v-if="list.length > 0")
     van-list(v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" @refresh="onRefresh")
-      van-cell(v-for="item in list" :key="item" :title="item")
+      div(v-for="item in list" :key="item.id" class="lists") {{item.name}}
 </template>
 
 <script>
@@ -14,9 +14,10 @@ export default {
   },
   data () {
     return {
-      count: 0,
       isLoading: false,
       list: [],
+      params: {page: 1, limit: 5},
+      paging: null,
       loading: false,
       finished: false
     }
@@ -25,32 +26,40 @@ export default {
     this.getDataLists()
   },
   methods: {
-    async getDataLists () {
-      const res = await this.$api.user.get({seriesid: 0, pageindex: 1, pagesize: 20})
-      console.log(res)
+    async getDataLists (keys) {
+      const res = await this.$api.user.get(this.params)
+      this.finished = false
+      if (res) {
+        if (keys === 'up') {
+          this.list = this.list.concat(res.data)
+          if (this.paging && this.paging.total === this.list.length) {
+            this.finished = true
+          }
+        } else {
+          this.isLoading = false
+          this.list = res.data
+        }
+        this.paging = res.paging
+      }
     },
     onLoad () {
-      // 异步更新数据
-      setTimeout(() => {
-        for (let i = 0; i < 50; i++) {
-          this.list.push(this.list.length + 1)
-        }
-        // 加载状态结束
-        this.loading = false
-
-        // 数据全部加载完成
-        if (this.list.length >= 150) {
-          this.finished = true
-        }
-      }, 500)
+      // 数据全部加载完成
+      this.params.page = this.params.page + 1
+      this.getDataLists('up')
+      // 加载状态结束
+      this.loading = false
     },
     onRefresh () {
-      setTimeout(() => {
-        // this.$toast('刷新成功')
-        this.isLoading = false
-        this.count++
-      }, 500)
+      this.params.page = 1
+      this.isLoading = true
+      this.getDataLists('down')
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .lists{
+    height: 100px;
+  }
+</style>

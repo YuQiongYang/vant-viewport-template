@@ -27,7 +27,7 @@ http.interceptors.response.use(function (response) {
   // 对响应数据做点什么
   return response.data
 }, (error) => {
-  return Promise.reject(error.response)
+  return Promise.reject(JSON.stringify(error))
 })
 
 export default http

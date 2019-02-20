@@ -14,6 +14,11 @@ export default new Router({
       path: '/pull',
       name: 'pull',
       component: () => import('@/page/pull/index')
+    },
+    {
+      path: '/upload',
+      name: 'upload',
+      component: () => import('@/page/upload/index')
     }
   ]
 })

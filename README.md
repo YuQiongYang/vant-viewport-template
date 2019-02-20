@@ -30,4 +30,5 @@ npm test
 考虑到页面中多处用到图片放大的功能，小编在store/modules/images里定义了mutation的方法，直接调用this.store.commit('HANDLE_PREVIEW_IMAGES',img),需要注意的是，img的类型只能是字符串或者数组（this只能在能获取vue实例里调用store里的方法）
 
 - 上拉加载 下拉刷新
-可以查看page
+可以查看page/pull 下的demo，基本可以直接复制过来使用（当然要改的东西还是要改哟）
+
