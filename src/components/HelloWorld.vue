@@ -31,7 +31,7 @@ export default {
 <style scoped lang="scss">
 h1, h2 {
   font-weight: normal;
-  font-size: 30px;
+  // font-size: 30px;
   color: $fc;
   background: $bg;
 }

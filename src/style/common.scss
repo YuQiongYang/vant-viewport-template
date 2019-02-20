@@ -50,45 +50,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-.viewer-title, .viewer-toolbar{
-  display: none !important;
-}
-.viewer-toolbar{
-  ul{
-    margin: 0 auto 1.334vw;
-  }
-  li{
-    width: 48px !important;
-    height: 48px !important;
-    margin-left: 2px;
-  }
-}
-.viewer-button{
-    height: 21.334vw !important;
-    overflow: hidden !important;
-    position: absolute !important;
-    right: -10.666vw !important;
-    top: -10.666vw !important;
-    width: 21.334vw !important;
-    &::before{
-      bottom: 4vw !important;
-      left: 4vw !important;
-    }
-}
-.viewer-close:before {
-  background-position: -69.334vw 0 !important;
-  height: 5.334vw !important;
-  width: 5.334vw !important;
-}
-.viewer-navbar{
-  ul{
-    height: 13.334vw;
-    li{
-      width: 8vw !important;
-      height: 13.334vw;
-    }
-	}
-}
 .com-flex{
 	display: flex;
 	align-items: center;
